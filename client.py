@@ -15,21 +15,46 @@ print("Le fichier a été correctement copié dans : %s." % file_name)
 """
 
 
+def byte_to_string(byte):
+    return str(byte)[2: len(str(byte)) - 1]
+
+
 class Client:
     def __init__(self):
         self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.id = 0
 
-    def connect(self):
+    def connect(self, user_id):
         self.s.connect(("localhost", 1111))
+        self.send_message("id:" + str(user_id))
+        self.id = user_id
 
     def send_message(self, msg):
         self.s.send(msg.encode())
+        verification = self.receive_msg(3)
+        if byte_to_string(verification) != "rcv":
+            print("Error")
 
     def receive_msg(self, size):
         r = self.s.recv(size)
         return r
 
+    def quit(self):
+        self.send_message("quit")
+
+    def get_last_message_rcv(self, id_contact):
+        self.send_message("get last message rcv: " + str(id_contact))
+
+    def get_username_of(self, user_id):
+        self.send_message("get username of: " + str(user_id))
+        return byte_to_string(self.receive_msg(100))
+
+    def get_username(self):
+        self.send_message("get username:")
+        return byte_to_string(self.receive_msg(100))
+
+
 me = Client()
-me.connect()
-me.send_message(input("message: "))
-print(me.receive_msg(2048).decode("utf8"))
+me.connect(3)
+print(me.get_username())
+me.quit()
