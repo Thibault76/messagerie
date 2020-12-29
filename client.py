@@ -20,11 +20,16 @@ class Client:
         self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
     def connect(self):
-        self.s.connect(("192.168.1.2", 1111))
+        self.s.connect(("localhost", 1111))
 
     def send_message(self, msg):
         self.s.send(msg.encode())
 
-    def receive_msg(self):
-        r = self.s.recv(9999999)
+    def receive_msg(self, size):
+        r = self.s.recv(size)
         return r
+
+me = Client()
+me.connect()
+me.send_message(input("message: "))
+print(me.receive_msg(2048).decode("utf8"))

@@ -4,22 +4,17 @@ import threading
 
 class ClientThread(threading.Thread):
 
-    def __init__(self, ip, port, clientsocket):
+    def __init__(self, client_ip, client_port, client_socket):
         threading.Thread.__init__(self)
-        self.ip = ip
-        self.port = port
-        self.clientsocket = clientsocket
-        print("[+] Nouveau thread pour %s %s" % (self.ip, self.port,))
+        self.ip = client_ip
+        self.port = client_port
+        self.clientsocket = client_socket
+        print("[+] Nouveau thread pour %s %s" % (self.ip, self.port))
 
     def run(self):
-        print("Connexion de %s %s" % (self.ip, self.port,))
+        r = self.clientsocket.recv(9999)
 
-        r = self.clientsocket.recv(2048)
-        print("Ouverture du fichier: ", r, "...")
-        fp = open(r, 'rb')
-        self.clientsocket.send(fp.read())
-
-        print("Client déconnecté...")
+        self.clientsocket.send(("rcv: " + str(r)[2 : len(str(r)) - 1]).encode())
 
 
 tcpsock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
