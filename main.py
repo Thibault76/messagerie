@@ -1,1 +1,1 @@
-print("main")
+import UI.interface
