@@ -28,4 +28,3 @@ class Client:
     def receive_msg(self):
         r = self.s.recv(9999999)
         return r
-
