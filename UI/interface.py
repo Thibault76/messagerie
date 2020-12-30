@@ -14,12 +14,18 @@ class Interface:
 
         self.user = cl.Client()
 
-        self.connectionMenu = tk.Frame(self.tk, width=1080, height=720, bg="#31bffd")
+        # connection
+        self.connectionMenu = tk.Frame(self.tk, bg="#31bffd")
         self.idEntry = tk.Entry(self.connectionMenu, width=75, bd=0, bg="#ffffff", relief="flat")
         self.idEntry.pack()
-
-        self.connectButton = tk.Button(self.connectionMenu, text="connect", bd=0, command=self.connect())
+        self.connectButton = tk.Button(self.connectionMenu, text="connect", bd=0, command=self.connect)
         self.connectButton.pack(pady=25)
+
+        # contacts
+        self.contacts = tk.Frame(self.tk, bg="#31bffd", width=1080, height=720)
+        self.contacts.pack_propagate(False)
+        self.contactList = tk.Listbox(self.contacts, relief="flat", width=60, height=1000)
+        self.contactList.pack(side="right")
 
         self.set_window('connection')
 
@@ -32,8 +38,17 @@ class Interface:
             self.tk.config(background="#31bffd")
             self.connectionMenu.pack(expand="YES")
 
+        elif window == "contacts":
+            self.connectionMenu.pack_forget()
+            self.contacts.pack(expand='YES')
+
+            self.get_contacts()
+
     def get_contacts(self):
-        pass
+        contacts = self.user.get_contacts()
+
+        for i in range(0, len(contacts)):
+            self.contactList.insert(str(i), self.user.get_username_of(int(contacts[i])))
 
     def get_contact_info(self, user_id):
         pass
@@ -47,15 +62,19 @@ class Interface:
     def get_from(self, user_id):
         pass
 
-    def write(self):
-        pass
-
     def run(self):
         self.tk.mainloop()
 
-    def deconnect(self):
+    def disconnect(self):
         self.user.quit()
 
     def connect(self):
-        print("ok")
+        try:
+            self.user_id = int(self.idEntry.get())
 
+        except ValueError:
+            ERR("interface.connect", "cannot load an int from a str value")
+            return False
+
+        self.user.connect(self.user_id)
+        self.set_window("contacts")

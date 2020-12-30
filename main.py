@@ -5,4 +5,4 @@ log.initLogs()
 
 interface = interface.Interface()
 interface.run()
-interface.deconnect()
+interface.disconnect()
