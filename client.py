@@ -54,8 +54,3 @@ class Client:
         self.send_message("get message with: " + str(target_id) + "| " + str(number))
         return byte_to_string(self.receive_msg(9999))
 
-me = Client()
-me.connect(3)
-print(me.get_username())
-print(me.get_message_with(4, 1))
-me.quit()
