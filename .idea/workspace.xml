@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cd9d978f-50ce-47c1-b720-c497716e85be" name="Default Changelist" comment="adding interface.py and UI folder">
+    <list default="true" id="cd9d978f-50ce-47c1-b720-c497716e85be" name="Default Changelist" comment="add the connection screen">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UI/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/UI/interface.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +121,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609271743784</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="add the connection screen">
+      <created>1609362582528</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1609362582528</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -140,7 +145,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="adding interface.py and UI folder" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding interface.py and UI folder" />
+    <MESSAGE value="add the connection screen" />
+    <option name="LAST_COMMIT_MESSAGE" value="add the connection screen" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -50,11 +50,3 @@ class Client:
     def add_contact(self, user_id):
         self.send_message("add contact: " + str(user_id))
 
-me = Client()
-me.connect(3)
-print(me.get_username())
-print(me.get_message_with(4, 1))
-me.send_message_to(0, "Mais non...")
-me.add_contact(900)
-print(me.get_contacts())
-me.quit()

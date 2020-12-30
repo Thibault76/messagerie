@@ -57,13 +57,5 @@ class Interface:
         self.user.quit()
 
     def connect(self):
-        try:
-            print(self.idEntry.get())
-
-        except ValueError:
-            ERR("interface.connect", "cannot load an int from a str value")
-            return False
-
-
-        #self.user.connect(self.user_id)
+        print("ok")
 
