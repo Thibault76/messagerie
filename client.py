@@ -42,9 +42,6 @@ class Client:
     def quit(self):
         self.send_message("quit")
 
-    def get_last_message_rcv(self, id_contact):
-        self.send_message("get last message rcv: " + str(id_contact))
-
     def get_username_of(self, user_id):
         self.send_message("get username of: " + str(user_id))
         return byte_to_string(self.receive_msg(100))
@@ -53,8 +50,12 @@ class Client:
         self.send_message("get username:")
         return byte_to_string(self.receive_msg(100))
 
+    def get_message_with(self, target_id, number):
+        self.send_message("get message with: " + str(target_id) + "| " + str(number))
+        return byte_to_string(self.receive_msg(9999))
 
 me = Client()
 me.connect(3)
 print(me.get_username())
+print(me.get_message_with(4, 1))
 me.quit()
