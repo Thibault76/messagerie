@@ -11,7 +11,7 @@ class Client:
         self.id = 0
 
     def connect(self, user_id):
-        self.s.connect(("localhost", 1111))
+        self.s.connect(("192.168.1.69", 1111))
         self.send_message("id:" + str(user_id))
         self.id = user_id
 
@@ -50,3 +50,11 @@ class Client:
     def add_contact(self, user_id):
         self.send_message("add contact: " + str(user_id))
 
+me = Client()
+me.connect(3)
+print(me.get_username())
+print(me.get_message_with(4, 1))
+me.send_message_to(0, "Mais non...")
+me.add_contact(900)
+print(me.get_contacts())
+me.quit()

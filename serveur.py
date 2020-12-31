@@ -12,7 +12,7 @@ class ClientThread(threading.Thread):
         self.ip = client_ip
         self.port = client_port
         self.client_socket = client_socket_data
-        print("[+] new user, IP : %s/%s" % (self.ip, self.port))
+        print("[+] Nouveau thread pour %s %s" % (self.ip, self.port))
         self.client_id = 0
         self.current_msg_rcv = ""
 
@@ -82,7 +82,7 @@ class ClientThread(threading.Thread):
 
                 if self.current_msg_rcv == "quit":
                     run = False
-                    print("user disconnected")
+                    print("Client disconnected")
                 else:
                     if self.current_msg_rcv[0:17] == "get username of: ":
                         self.get_username_of()
